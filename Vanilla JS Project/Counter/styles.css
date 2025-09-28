@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#counter{
+    font-size: 48px;
+}
+
+input{
+    width: 60px;
+}
+
+.increment-button{
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    align-items: center;
+    background: green;
+    border-radius: 5px;
+    border: 0px;
+    cursor: pointer;
+}
+
+.decrement-button{
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    background: red;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.reset-button {
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 28px;
+    background-color: yellow;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.increment-button:active{
+    background: lightgreen;
+}
+
+.decrement-button:active{
+    background: lightcoral;
+}
+
+.reset-button:active{
+    background: lightyellow;
+}

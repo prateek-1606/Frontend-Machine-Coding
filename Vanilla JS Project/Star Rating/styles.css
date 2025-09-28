@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.star{
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.star-container{
+    margin-bottom: 10px;
+}
+
+.filled-star{
+    color: red;
+}

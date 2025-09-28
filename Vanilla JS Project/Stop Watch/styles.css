@@ -1,0 +1,26 @@
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.stop-watch-container{
+    display: flex;
+}
+
+.stop-watch{
+    padding: 5px;
+}
+
+.stop-watch-input{
+    width: 100px;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

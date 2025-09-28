@@ -1,0 +1,20 @@
+.all-comments{
+    border: 2px solid black;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.comment-text{
+    font-size: large;
+    font-weight: 700;
+}
+
+.comment-reply{
+    color: blue;
+    cursor: pointer;
+}
+
+.input-container{
+    margin-top: 10px;
+}

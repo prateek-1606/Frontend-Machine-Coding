@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.chess-board{
+    border: 2px solid black;
+    width: 600px;
+    height: 600px;
+}
+
+.row{
+    width: 100%;
+    height: 75px;
+    display: flex;
+}
+
+.block {
+    width: 75px;
+    height: 75px;
+}
+
+.black-box{
+    background-color: black;
+}
+
+.white-box{
+    background-color: white;
+}
+
+.hover-block {
+    background-color: lightblue;
+}
+
+.highlight-block{
+    background-color: blue;
+}
