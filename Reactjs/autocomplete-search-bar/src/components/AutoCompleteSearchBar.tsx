@@ -27,7 +27,7 @@ const AutoCompleteSearchBar = () => {
   }, [searchInput]);
 
   useEffect(() => {
-    if (!searchInput) return;
+    if (searchInput === null || searchInput === undefined) return;
 
     const timer = setTimeout(() => {
       fetchSuggestions();
