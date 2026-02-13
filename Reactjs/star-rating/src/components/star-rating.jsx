@@ -1,44 +1,51 @@
 import { useState } from "react";
-import { FaRegStar } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
+import { FaRegStar, FaStarHalfAlt, FaStar } from "react-icons/fa";
 
-const StarRating = ({ ratingLength }) => {
-  const [rating, setRating] = useState(-1);
-  const [hoveringIndex, setHoveringIndex] = useState(-1);
+const StarRating = ({ ratingLength = 5, value = 0 }) => {
+  const [rating, setRating] = useState(value);
+  const [hoverValue, setHoverValue] = useState(-1);
 
-  const renderStar = (index) => {
-    if (rating === -1 && hoveringIndex !== -1) {
-      if (hoveringIndex <= index) return <FaRegStar fontSize={36} />;
-      else return <FaStar fontSize={36} />;
+  const getStarValue = (e, index) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const percent = offsetX / rect.width;
+
+    return percent <= 0.5 ? index + 0.5 : index + 1;
+  };
+
+  const renderStar = (starIndex) => {
+    const isHovering = hoverValue !== -1;
+    const displayValue = isHovering ? hoverValue : rating;
+    const color = isHovering ? "black" : "blue";
+
+    if (displayValue >= starIndex) {
+      return <FaStar fontSize={36} color={color} />;
+    } else if (displayValue >= starIndex - 0.5) {
+      return <FaStarHalfAlt fontSize={36} color={color} />;
+    } else {
+      return <FaRegStar fontSize={36} color={isHovering ? "black" : "gray"} />;
     }
-
-    if (rating <= index) return <FaRegStar fontSize={36} />;
-    else if (rating > index) return <FaStar fontSize={36} color="blue" />;
   };
 
   return (
-    <div>
-      {new Array(ratingLength).fill(" ").map((_, index) => {
+    <div style={{ display: "flex", gap: "4px" }}>
+      {Array.from({ length: ratingLength }).map((_, index) => {
+        const starIndex = index + 1;
+
         return (
           <span
-            style={{
-              cursor: "pointer",
+            key={index}
+            style={{ cursor: "pointer" }}
+            onClick={(e) => {
+              const newValue = getStarValue(e, index);
+              setRating(newValue === rating ? 0 : newValue);
             }}
-            onClick={() => {
-              if (rating === index + 1) {
-                setRating(-1);
-                return;
-              }
-              setRating(index + 1);
+            onMouseMove={(e) => {
+              setHoverValue(getStarValue(e, index));
             }}
-            onMouseOver={() => {
-              setHoveringIndex(index + 1);
-            }}
-            onMouseLeave={() => {
-              setHoveringIndex(-1);
-            }}
+            onMouseLeave={() => setHoverValue(-1)}
           >
-            {renderStar(index)}
+            {renderStar(starIndex)}
           </span>
         );
       })}
