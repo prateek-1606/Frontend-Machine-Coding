@@ -3,7 +3,7 @@ import { FaRegStar, FaStarHalfAlt, FaStar } from "react-icons/fa";
 
 const StarRating = ({ ratingLength = 5, value = 0 }) => {
   const [rating, setRating] = useState(value);
-  const [hoverValue, setHoverValue] = useState(-1);
+  const [hoverValue, setHoverValue] = useState(0);
 
   const getStarValue = (e, index) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -14,7 +14,7 @@ const StarRating = ({ ratingLength = 5, value = 0 }) => {
   };
 
   const renderStar = (starIndex) => {
-    const isHovering = hoverValue !== -1;
+    const isHovering = hoverValue !== 0;
     const displayValue = isHovering ? hoverValue : rating;
     const color = isHovering ? "black" : "blue";
 
@@ -43,7 +43,7 @@ const StarRating = ({ ratingLength = 5, value = 0 }) => {
             onMouseMove={(e) => {
               setHoverValue(getStarValue(e, index));
             }}
-            onMouseLeave={() => setHoverValue(-1)}
+            onMouseLeave={() => setHoverValue(0)}
           >
             {renderStar(starIndex)}
           </span>
